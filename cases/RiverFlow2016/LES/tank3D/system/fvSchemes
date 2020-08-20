@@ -1,0 +1,71 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.7.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         backward;
+}
+
+gradSchemes
+{
+    default         Gauss linear;
+}
+
+divSchemes
+{
+    default         none;
+    div(phi,U)      Gauss linear;
+    div(phi,Sal)      Gauss limitedLinear 1;
+    div(phiAlpha,Sed)      Gauss limitedLinear 1;
+    div(phi,k)      Gauss limitedLinear 1;
+    div(phi,R)      Gauss limitedLinear 1;
+    div(R)          Gauss linear;
+    div((nuEff*dev(T(grad(U))))) Gauss linear;
+}
+
+laplacianSchemes
+{
+    default         none;
+    laplacian(nuEff,U) Gauss linear uncorrected;
+    laplacian(rAUf,p_rgh) Gauss linear uncorrected;
+    laplacian(kappaEff,Sal) Gauss linear uncorrected;
+    laplacian(kappaEff,Sed) Gauss linear uncorrected;
+    laplacian(DkEff,k) Gauss linear uncorrected;
+    laplacian(DepsilonEff,epsilon) Gauss linear uncorrected;
+    laplacian(DREff,R) Gauss linear uncorrected;
+
+    laplacian(diffusivity,cellMotionU) Gauss linear uncorrected;
+}
+
+interpolationSchemes
+{
+    default         linear;
+}
+
+snGradSchemes
+{
+    default         uncorrected;
+}
+
+fluxRequired
+{
+    default         no;
+    p_rgh           ;
+}
+
+
+// ************************************************************************* //

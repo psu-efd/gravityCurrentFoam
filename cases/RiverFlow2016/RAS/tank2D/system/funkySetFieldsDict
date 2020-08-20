@@ -1,0 +1,30 @@
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "system";
+    local           "";
+
+    class           dictionary;
+    object          funkySetFieldsDict;
+}
+
+expressions
+(
+	initSal
+	{
+		field Sal;
+		expression "10";
+		condition "pos().y<=(0.5-0.01*cos(3.141593*pos().x))";
+	}
+
+        initSed
+        {
+                field Sed;
+                expression "0.01";
+                condition "pos().y>=(0.5-0.01*cos(3.141593*pos().x))";
+        }
+);

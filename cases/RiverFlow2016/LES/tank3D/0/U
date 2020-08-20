@@ -1,0 +1,77 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "";
+    case            "";
+    instance        "";
+    local           "";
+
+    class           volVectorField;
+    object          U;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    top
+    {
+        type            symmetryPlane;
+    }
+
+    inlet
+    {
+        type            turbulentInlet;
+        referenceField  uniform (0.09 0 0);
+        fluctuationScale (0.02 0.01 0.01);
+        value           uniform (0.09 0 0);
+
+        //type            fixedValue;
+        //value           uniform (0.09 0 0);
+    }
+
+    bottomInlet
+    {
+        type            fixedValue;
+        value           uniform (0 8.333e-5 0);
+    }
+
+    outlet
+    {
+        type            inletOutlet;
+        inletValue      uniform (0 0 0);
+        value           $internalField;
+
+        //type            zeroGradient;
+    }
+
+    walls
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    frontAndBack
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+}
+
+
+// ************************************************************************* //

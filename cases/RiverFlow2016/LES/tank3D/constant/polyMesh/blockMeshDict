@@ -1,0 +1,148 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// block definition for a porosity with an angled inlet/outlet
+// the porosity is not aligned with the main axes
+//
+       
+  
+  
+//refine times
+   
+
+      
+ //domain length 1
+ //domain length 2
+ //domain length 3
+ //domain length 3
+ //domain length 3
+ //domain length 3
+
+           
+           
+  
+  
+convertToMeters 1;
+
+vertices
+(
+    //vertex on the front
+    (0.3   0 0.06)  // pt 0 (a0f) 
+    (0.8   0 0.06)  // pt 1 (a1f) 
+    (1.8   0 0.06)  // pt 2 (a2f) 
+    (0   0.405 0.06)  // pt 3 (a3f) 
+    (0.3   0.405 0.06)  // pt 4 (a4f) 
+    (0.8   0.405 0.06)  // pt 5 (a5f) 
+    (1.8   0.405 0.06)  // pt 6 (a6f) 
+    (0   0.43 0.06)  // pt 7 (a7f) 
+    (0.3   0.43 0.06)  // pt 8 (a8f) 
+    (0.8   0.43 0.06)  // pt 9 (a9f) 
+    (1.8  0.43 0.06)  // pt 10 (a10f) 
+
+    //vertex on the back
+    (0.3   0 -0.06)  // pt 11 (a0b) 
+    (0.8   0 -0.06)  // pt 12 (a1b) 
+    (1.8   0 -0.06)  // pt 13 (a2b) 
+    (0   0.405 -0.06)  // pt 14 (a3b) 
+    (0.3   0.405 -0.06)  // pt 15 (a4b) 
+    (0.8   0.405 -0.06)  // pt 16 (a5b) 
+    (1.8   0.405 -0.06)  // pt 17 (a6b) 
+    (0   0.43 -0.06)  // pt 18 (a7b) 
+    (0.3   0.43 -0.06)  // pt 19 (a8b) 
+    (0.8   0.43 -0.06)  // pt 20 (a9b) 
+    (1.8  0.43 -0.06)  // pt 21 (a10b) 
+);
+
+blocks
+(
+    // block 1
+    hex (11 12 16 15 0 1 5 4)
+    block1 ( 150 150 36 )  simpleGrading (1 0.1 1)
+
+    // block 2
+    hex (12 13 17 16 1 2 6 5)
+    block1 ( 300 150 36 )  simpleGrading (1 0.1 1)
+
+    // block 3
+    hex (14 15 19 18 3 4 8 7)
+    block1 ( 90 30 36 )  simpleGrading (1 5 1)
+
+    // block 4
+    hex (15 16 20 19 4 5 9 8)
+    block1 ( 150 30 36 )  simpleGrading (1 5 1)
+
+    // block 5
+    hex (16 17 21 20 5 6 10 9)
+    block1 ( 300 30 36 )  simpleGrading (1 5 1)
+
+);
+
+edges
+(
+);
+
+patches
+(
+    symmetryPlane top
+    (
+       (7 8 19 18)
+       (8 9 20 19)
+       (9 10 21 20)
+    )
+
+    patch inlet
+    (
+       (3 7 18 14)
+    )
+
+    wall walls
+    (
+       (3 4 15 14)
+       (0 4 15 11)
+       (0 1 12 11)
+       (2 6 17 13)
+       (10 6 17 21)
+    )
+
+    patch bottomInlet
+    (
+       (1 2 13 12)
+    )
+
+    wall frontAndBack
+    (
+       (11 12 16 15)
+       (0 1 5 4)
+
+       (12 13 17 16)
+       (1 2 6 5)
+
+       (14 15 19 18)
+       (3 4 8 7)
+
+       (15 16 20 19)
+       (4 5 9 8)
+
+       (16 17 21 20)
+       (5 6 10 9)
+    )
+
+);
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //

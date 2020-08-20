@@ -1,0 +1,70 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.4.1                                 |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version 2.0;
+    format ascii;
+
+    root "/home/liu19/research/OpenFOAM/liu19-1.4.1/run/tutorials/densityCurrent";
+    case "densityDamBreak";
+    instance "0";
+    local "";
+
+    class volScalarField;
+    object p_rgh;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -2 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    top
+    {
+        type            symmetryPlane;
+    }
+
+    inlet
+    {
+        type            fixedFluxPressure;
+        rho             rhok;
+        value           uniform 0;
+    }
+
+    bottomInlet
+    {
+        type            fixedFluxPressure;
+        rho             rhok;
+        value           uniform 0;
+    }
+
+    outlet
+    {
+        type            fixedValue;
+        value           uniform 0;
+    }
+
+    walls 
+    {
+        type            fixedFluxPressure;
+        rho             rhok;
+        value           uniform 0;
+    }
+
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //
