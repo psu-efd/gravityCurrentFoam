@@ -12,18 +12,17 @@ This is a repo for the gravityCurrentFoam model development and application.
 * References: 
    M. Rouhnia, K. Strom, and X. Liu (2016). Experiments and modeling of density instabilities driven by interface shear and their influence on removal of sediment from buoyant plumes. In Proceedings of River Flow 2016. Constantinescu, Garcia, and Hanes (Eds). Taylor and Francis Group, London.
 
-Xiaofeng Liu, Ph.D., P.E.
+## Disclaimer ##
+This offering is not approved or endorsed by OpenCFD Limited, producer and distributor of the OpenFOAM software via <www.openfoam.com>, and owner of the OPENFOAM&reg;  and OpenCFD&reg; trade marks.
 
-Associate Professor
+OPENFOAM&reg; is a registered trade mark of OpenCFD Limited, producer and distributor of the OpenFOAM software via <www.openfoam.com>.
 
-Department of Civil and Environmental Engineering
 
-Institute of Computational and Data Sciences
-
-Penn State University
-
-223B Sackett Building, University Park, PA 16802
-
-Tel: 814-863-2940 (O)
+## Authors and contributors: ##
+Xiaofeng Liu, Ph.D., P.E.  
+Associate Professor  
+Department of Civil and Environmental Engineering  
+Institute of Computational and Data Sciences  
+Penn State University  
 
 Web: http://water.engr.psu.edu/liu/
